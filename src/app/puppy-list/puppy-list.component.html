@@ -1,13 +1,15 @@
-<div class="grid text-center">
+<div class="row text-center">
   @for (puppy of puppyList; track puppy) {
-    <div class="g-col-6">
-      <div class="card ratio ratio-16x9 text-bg-dark">
+    <div class="col-12 col-md-6 p-3">
+      <div class="card ratio ratio-16x9 text-bg-dark overflow-hidden">
         @if (puppy.fields['heroImage']) {
-          <img [src]="puppy.fields['heroImage'] | imageUrl" />
+          <img [src]="puppy.fields['heroImage'] | imageUrl" style="width: 100%; height: auto;" />
         }
         <div class="card-img-overlay">
-          <h5 class="card-title">{{puppy.fields['name']}}</h5>
-          <a [routerLink]="['puppy', puppy.fields['name']]">View Photos</a>
+          <div class="bg-transparent h-100 d-flex flex-column justify-content-center align-items-end p-3">
+            <h2 class="card-title">{{puppy.fields['name']}}</h2>
+            <a class="stretched-link" [routerLink]="['puppy', puppy.fields['name']]">View Photos</a>
+          </div>
 <!--          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
         </div>
       </div>

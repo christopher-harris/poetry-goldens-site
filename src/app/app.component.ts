@@ -1,5 +1,7 @@
 import {Component, inject} from '@angular/core';
-import {ContentfulService} from "../services/contentful.service";
+import {AppRepository} from "./state/app.repository";
+import {Observable} from "rxjs";
+import {Entry} from "contentful";
 
 @Component({
   selector: 'app-root',
@@ -7,8 +9,11 @@ import {ContentfulService} from "../services/contentful.service";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  puppiesData$: Observable<Entry<any>[]> = this.appRepository.puppies$;
 
-  constructor(private contentfulService: ContentfulService) {
-    // this.contentfulService.getImages();
+  constructor(private appRepository: AppRepository) {
+    appRepository.fetchPuppies();
+    this.puppiesData$.subscribe(x => console.log(x));
   }
+
 }
