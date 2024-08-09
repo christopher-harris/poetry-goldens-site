@@ -42,6 +42,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": ["contentful"],
             "outputPath": "dist/puppy-site",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -66,7 +67,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "1024kB",
                   "maximumError": "1MB"
                 },
                 {
