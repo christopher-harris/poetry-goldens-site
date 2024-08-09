@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {ContentfulService} from "../services/contentful.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'puppy-site';
+
+  constructor(private contentfulService: ContentfulService) {
+    // this.contentfulService.getImages();
+  }
 }
